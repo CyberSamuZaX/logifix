@@ -179,7 +179,7 @@
 
         async function generateBotResponse(userMessage) {
             try {
-                const response = await fetch("https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm4ySFNqbEkwV1Rndi1lVnBoRlJZMlRtSUt2T3UzUkxfMS1PdE5ELTJsa2llbV9ZVkxuRzBHYU00cHdaR09DbUV6YzZTQk1pTUlhSmkwUkIzWV9vR2RxRExiZXc9PQ==", {
+                const response = await fetch("https://backend.buildpicoapps.com/aero/run/llm-api?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", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt: userMessage })
