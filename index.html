@@ -187,18 +187,28 @@ async function generateBotResponse(userMessage) {
             }
         });
 
-        const data = await response.json();
-
-        // Process the response
-        if (data.response) {
-            appendMessage(data.response, 'bot-message');
+        if (response.ok) {
+            const data = await response.json();
+            removeSpinner();
+            if (data.response) {
+                appendMessage(data.response, 'bot-message');
+            } else {
+                appendMessage("Sorry, I couldn't understand that.", 'bot-message');
+            }
         } else {
-            appendMessage("Sorry, I couldn't understand that.", 'bot-message');
+            // Log the error response to console for better debugging
+            const errorText = await response.text();
+            console.error("Error from API:", errorText);
+            removeSpinner();
+            appendMessage("An error occurred while processing your request.", 'bot-message');
         }
     } catch (error) {
+        console.error("Error in API call:", error);
+        removeSpinner();
         appendMessage("An error occurred while processing your request.", 'bot-message');
     }
 }
+
 
 
     </script>
